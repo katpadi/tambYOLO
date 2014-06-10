@@ -49,5 +49,29 @@ def login(provider_name):
     # Don't forget to return the response.
     return response
 
+def yolo():
+  '''
+  Pass oauth here?
+  Call the API
+  set url = 'https://api.twitter.com/1.1/search/tweets.json?q=%23meetmatt&count=5'
+  set response = result.provider.access(url)
+  if response.status == 200
+    if response.data.errors
+      Damn that error: {{ response.data.errors }}
+    endif
+    if response.data
+      Your 5 most recent hashtags:<br />
+      for tweet in response.data
+        <h1>  print tweet.screen_name</h1>
+        <h3>{{ tweet.text }}</h3>
+        Posted on: {{ tweet.created_at }}
+      endfor
+    endif
+  endif
+
+  Then process response...
+  '''
+  return "Yeah bitch"
+
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
