@@ -3,7 +3,8 @@
 Some comments about the app
 """
 
-from flask import Flask, render_template, request, make_response
+import requests
+from flask import Flask, render_template, request, make_response, session, jsonify
 from authomatic.adapters import WerkzeugAdapter
 from authomatic import Authomatic
 
@@ -11,6 +12,8 @@ from config import CONFIG
 
 app = Flask(__name__)
 
+# Temp lang naman
+app.config['SECRET_KEY'] = 'holyshitthisisasecret'
 
 # Instantiate Authomatic.
 authomatic = Authomatic(CONFIG, 'your secret string', report_errors=False)
@@ -40,38 +43,30 @@ def login(provider_name):
     # If there is no LoginResult object, the login procedure is still pending.
     if result:
         if result.user:
-            # We need to update the user to get more info.
-            result.user.update()
+          '''
+          Save session here
+          '''
+          session['access_token'] = result.user.credentials.token
+          session['creds'] = result.user.credentials
+          # We need to update the user to get more info.
+          result.user.update()
 
         # The rest happens inside the template.
-        return render_template('login.html', result=result)
+        return render_template('yolo.html', result=result)
 
     # Don't forget to return the response.
     return response
 
+@app.route('/yolo', methods=['GET', 'POST'])
 def yolo():
-  '''
-  Pass oauth here?
-  Call the API
-  set url = 'https://api.twitter.com/1.1/search/tweets.json?q=%23meetmatt&count=5'
-  set response = result.provider.access(url)
-  if response.status == 200
-    if response.data.errors
-      Damn that error: {{ response.data.errors }}
-    endif
-    if response.data
-      Your 5 most recent hashtags:<br />
-      for tweet in response.data
-        <h1>  print tweet.screen_name</h1>
-        <h3>{{ tweet.text }}</h3>
-        Posted on: {{ tweet.created_at }}
-      endfor
-    endif
-  endif
+  hashtag = request.args.get('hashtag')
+  url = 'https://api.twitter.com/1.1/search/tweets.json?q=%s&count=%s' % (hashtag, 5)
+  return session['access_token']
+  res = requests.get(url, params={'access_token': session['access_token']})
 
-  Then process response...
-  '''
-  return "Yeah bitch"
+  #return render_template('yolo.html', tweets=res.json())
+
+  return jsonify(**res.json())
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
