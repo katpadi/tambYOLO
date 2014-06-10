@@ -1,0 +1,9 @@
+README
+flask_oauth.py
+setup.cfg
+pip-egg-info/Flask_OAuth.egg-info/PKG-INFO
+pip-egg-info/Flask_OAuth.egg-info/SOURCES.txt
+pip-egg-info/Flask_OAuth.egg-info/dependency_links.txt
+pip-egg-info/Flask_OAuth.egg-info/not-zip-safe
+pip-egg-info/Flask_OAuth.egg-info/requires.txt
+pip-egg-info/Flask_OAuth.egg-info/top_level.txt
