@@ -46,8 +46,7 @@ def login(provider_name):
           '''
           Save session here
           '''
-          session['access_token'] = result.user.credentials.token
-          session['creds'] = result.user.credentials
+          session['credentials'] = result.user.credentials.serialize()
           # We need to update the user to get more info.
           result.user.update()
 
@@ -57,16 +56,18 @@ def login(provider_name):
     # Don't forget to return the response.
     return response
 
+
 @app.route('/yolo', methods=['GET', 'POST'])
 def yolo():
   hashtag = request.args.get('hashtag')
-  url = 'https://api.twitter.com/1.1/search/tweets.json?q=%s&count=%s' % (hashtag, 5)
-  return session['access_token']
-  res = requests.get(url, params={'access_token': session['access_token']})
+  url = 'https://api.twitter.com/1.1/search/tweets.json'
+  params = {
+    'q': hashtag,
+    'count': 5,
+  }
+  res = authomatic.access(session['credentials'], url, params=params)
+  return jsonify(**res.data)
 
-  #return render_template('yolo.html', tweets=res.json())
-
-  return jsonify(**res.json())
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
