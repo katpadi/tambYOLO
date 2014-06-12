@@ -4,6 +4,7 @@ Some comments about the app
 """
 
 import requests
+import random
 from flask import Flask, render_template, request, make_response, session, jsonify
 from authomatic.adapters import WerkzeugAdapter
 from authomatic import Authomatic
@@ -51,7 +52,7 @@ def login(provider_name):
           result.user.update()
 
         # The rest happens inside the template.
-        return render_template('yolo.html', result=result)
+        return render_template('login.html', result=result)
 
     # Don't forget to return the response.
     return response
@@ -66,8 +67,9 @@ def yolo():
     'count': 5,
   }
   res = authomatic.access(session['credentials'], url, params=params)
-  return jsonify(**res.data)
-
-
+  #return jsonify(**res.data)
+  #keys = my_dict.keys()
+  #random.shuffle(keys)
+  return render_template('yolo.html', tweet=random.choice(res.data['statuses']), tweets=res.data)
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

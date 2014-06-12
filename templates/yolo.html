@@ -1,17 +1,30 @@
 {# login.html #}
 {% extends "base.html" %}
 {% block body %}
-  <a href="/">Home</a>
-  {% if result.error %}
-    <h2>Damn that error: {{ result.error.message }}</h2>
-  {% endif %}
-  {% if result.user %}
-      <h1>Hi {{ result.user.name }}</h1>
-      <h2>Your id is: {{ result.user.id }}</h2>
-  {% endif %}
-
-  {% if result.user.credentials %}
-
+  <h1>Big Winner!!!</h1>
+  <h2>Bigyan ng jacket si...</h2>
+    <div class="row">
+      <div class="col-md-2">
+        <h3>{{ tweet.user.name }} <small>@{{ tweet.user.screen_name }}</small></3></h3>
+      </div>
+      <div class="col-md-6 bubble">
+        {{ tweet.text }}
+        <a href="#" data-datetime="{{ tweet.created_at }}">{{ tweet.created_at }}</a>
+      </div>
+    </div>
+  {% if tweets.statuses %}
+    <h2>The Nominees Were:</h2>
+    {% for tweet in tweets.statuses %}
+      <div class="row">
+        <div class="col-md-2">
+          <h3>{{ tweet.user.name }} <small>@{{ tweet.user.screen_name }}</small></3></h3>
+        </div>
+        <div class="col-md-6 bubble">
+          {{ tweet.text }}
+          <a href="#" data-datetime="{{ tweet.created_at }}">{{ tweet.created_at }}</a>
+        </div>
+      </div>
+    {% endfor %}
   <form action="/yolo" method="get">
     <p>
       <label>
@@ -23,10 +36,5 @@
       <button type="submit">YOLO!</button>
     </p>
   </form>
-    <!--
-      Dito ko ba save sa SESSION?
-      Load some form here?
-      Upon submit, call def yolo...
-    -->
-  {% endif %}{# result.user.credentials #}
+  {% endif %}{# if tweets.statuses #}
 {% endblock %}

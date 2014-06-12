@@ -2,9 +2,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+.bubble
+{
+position: relative;
+width: 230px;
+height: auto;
+padding: 0px;
+background: #A6DCFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+div.parent {
+  margin: 0;
+  padding: 0;
+}
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 21px 15px 0;
+border-color: transparent #A6DCFF;
+display: block;
+width: 0;
+z-index: 1;
+margin-top: -15px;
+left: -21px;
+top: 50%;
+}
+.tweeterer, .date {
+display: inline-block;
+vertical-align: top;
+margin: 0;
+padding: 0;
+line-height: 18px;
+width: 140px;
+}
+</style>
         <title>Authomatic Flask Example</title>
     </head>
     <body>
         {% block body %}{% endblock %}
+        <footer>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        </footer>
     </body>
 </html>
