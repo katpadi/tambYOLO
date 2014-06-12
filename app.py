@@ -65,12 +65,12 @@ def yolo():
   url = 'https://api.twitter.com/1.1/search/tweets.json'
   params = {
     'q': hashtag,
-    'count': 10,
+    'count': 20,
   }
   res = authomatic.access(session['credentials'], url, params=params)
-  #return jsonify(**res.data)
-  #keys = my_dict.keys()
-  #random.shuffle(keys)
+
+  #random.sample = if more than 1
   return render_template('yolo.html', tweet=random.choice(res.data['statuses']), tweets=res.data)
+
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

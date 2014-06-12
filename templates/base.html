@@ -10,7 +10,10 @@
       background-color: #eee;
     }
     header.ulo {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .container {
       text-align: center;
     }
     .form-signin {
@@ -44,42 +47,49 @@
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }
-    .bubble
-    {
-    position: relative;
-    width: 230px;
-    height: auto;
-    padding: 10px;
-    background: #A6DCFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    div.twitter-tweet-rendered p.entry-title {
+        font-family: Arial, sans-serif !important;
+        font-size: 14px !important;
+        padding: 5px !important;
+        background: #eee !important;
+        max-width: 300px !important;
     }
-    div.parent {
-      margin: 0;
-      padding: 0;
+
+    div.twitter-tweet-rendered p.entry-title a.link {
+        font-family: Arial, sans-serif !important;
+        font-size: 14px !important;
     }
-    .bubble:after
-    {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 15px 21px 15px 0;
-    border-color: transparent #A6DCFF;
-    display: block;
-    width: 0;
-    z-index: 1;
-    margin-top: -15px;
-    left: -21px;
-    top: 50%;
+
+    div.twitter-tweet-rendered div.twt-border {
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
     }
-    .tweeterer, .date {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0;
-    padding: 0;
-    line-height: 18px;
-    width: 140px;
+
+    div.twitter-tweet-rendered iframe.twt-follow-button { display: none !important; }
+
+    div.twitter-tweet-rendered div.footer ul.twt-actions {display: none !important;}
+
+    div.twitter-tweet-rendered div.footer a.view-details {
+        display:block !important;
+        width: 120px !important;
+        margin: 5px 0 !important;
+        padding: 7px 0 !important;
+        background: #000 !important;
+        color: #fff !important;
+        text-decoration: none !important;
+        border-radius: 13px !important;
+        text-align: center !important;
+        box-shadow: -1px -1px 2px #555 !important;
+    }
+
+    div.twitter-tweet-rendered div.footer a.view-details span {
+        font: 14px Georgia, serif !important;
+        color: #fff !important;
+    }
+    div.paa {
+      margin-top: 30px;
+      text-align: center;
     }
   </style>
       <title>TambYOLO</title>
@@ -87,8 +97,8 @@
   <body>
     <header class="ulo">
       <h1>TambYOLO!</h1>
-      <a class="bootstrap-logo" href="/" title="Home">
-        <img src="http://placekitten.com/145/145" alt="TambYOLO">
+      <a href="/" title="TambYOLO!">
+        {% block imahe %} <img src="http://placekitten.com/145/145" alt="TambYOLO"> {% endblock %}
       </a>
       <p>
         Pick a winning <a href="#">#hashtag</a> with a swag!
@@ -96,8 +106,13 @@
     </header>
     {% block body %}{% endblock %}
     <footer>
+      <div class="paa">
+        <p>TambYOLO - a practice project by <a href="https://twitter.com/katpadi">@katpadi</a>.</p>
+      </div>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </footer>
   </body>
 </html>

@@ -1,46 +1,31 @@
 {# login.html #}
 {% extends "base.html" %}
+{% block imahe %}{% endblock %}
 {% block body %}
-  <h1>Big Winner!!!</h1>
-  <h2>Bigyan ng jacket si...</h2>
-    <div class="row">
-      <div class="col-md-2">
-        <h3>{{ tweet.user.name }} <small>@{{ tweet.user.screen_name }}</small></3></h3>
-      </div>
-      <div class="col-md-6 bubble">
-        {{ tweet.text }}
-        <a href="#" data-datetime="{{ tweet.created_at }}">{{ tweet.created_at }}</a>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>The Winner</h3>
+      <blockquote class="twitter-tweet">
+      <p>{{ tweet.text }}</p> {{tweet.user.name}} (@{{tweet.user.screen_name}}) <a href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}" data-datetime="{{tweet.id_str}}">{{ tweet.id_str }}</a>
+      </blockquote>
     </div>
-  {% if tweets.statuses %}
-    <h2>The Nominees Were:</h2>
-    {% for tweet in tweets.statuses %}
-      <div class="row">
-        <div class="col-md-2">
-          <h3>{{ tweet.user.name }} <small>@{{ tweet.user.screen_name }}</small></3></h3>
+    <div class="col-md-6">
+      <h3>Draw Again!</h3>
+      <form action="/yolo" method="get" class="form-signin">
+        <div class="form-group">
+          <label for="hashtag"> Hashtag? </label>
+          <input type="text" class="form-control" placeholder="#lakers" id="hashtag" name="hashtag">
         </div>
-        <div class="col-md-6 bubble">
-          {{ tweet.text }}
-          <a href="#" data-datetime="{{ tweet.created_at }}">{{ tweet.created_at }}</a>
+        <div class="form-group">
+          <label for="how_many">No. of winners? <sup>(not working yet)</sup> </label>
+          <input type="text" class="form-control" id="how_many" value=20 name="how_many" disabled>
         </div>
-      </div>
-    {% endfor %}
-  <form action="/yolo" method="get">
-    <p>
-      <label>
-        Hashtag?
-        <input type="text" name="hashtag">
-      </label>
-    </p>
-    <p>
-      <label>
-        How many winnersss???
-        <input type="text" value=10 name="how_many" disabled>
-      </label>
-    </p>
-    <p class="submit">
-      <button type="submit">YOLO!</button>
-    </p>
-  </form>
-  {% endif %}{# if tweets.statuses #}
+        <p class="submit">
+          <button class="btn-md btn btn-primary" type="submit">YOLO!</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
