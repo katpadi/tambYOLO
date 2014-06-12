@@ -1,13 +1,12 @@
 {# login.html #}
 {% extends "base.html" %}
 {% block body %}
-  <a href="/">Home</a>
   {% if result.error %}
     <h2>Damn that error: {{ result.error.message }}</h2>
   {% endif %}
   {% if result.user %}
       <h1>Hi {{ result.user.name }}</h1>
-      <h2>Your id is: {{ result.user.id }}</h2>
+      <h2>Are you ready to YOLO???</h2>
   {% endif %}
 
   {% if result.user.credentials %}

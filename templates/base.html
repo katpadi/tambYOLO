@@ -1,53 +1,103 @@
 {# base.html #}
 <!DOCTYPE html>
 <html>
-    <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-.bubble
-{
-position: relative;
-width: 230px;
-height: auto;
-padding: 0px;
-background: #A6DCFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-}
-div.parent {
-  margin: 0;
-  padding: 0;
-}
-.bubble:after
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 21px 15px 0;
-border-color: transparent #A6DCFF;
-display: block;
-width: 0;
-z-index: 1;
-margin-top: -15px;
-left: -21px;
-top: 50%;
-}
-.tweeterer, .date {
-display: inline-block;
-vertical-align: top;
-margin: 0;
-padding: 0;
-line-height: 18px;
-width: 140px;
-}
-</style>
-        <title>Authomatic Flask Example</title>
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        <footer>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        </footer>
-    </body>
+  <head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #eee;
+    }
+    header.ulo {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-signin {
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #e5e5e5;
+      text-align: center;
+    }
+    .form-signin .form-signin-heading{
+      margin-bottom: 10px;
+    }
+    .form-signin a {
+      color: #FFF;
+    }
+    .form-signin .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    .form-signin input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .bubble
+    {
+    position: relative;
+    width: 230px;
+    height: auto;
+    padding: 10px;
+    background: #A6DCFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    }
+    div.parent {
+      margin: 0;
+      padding: 0;
+    }
+    .bubble:after
+    {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 21px 15px 0;
+    border-color: transparent #A6DCFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-top: -15px;
+    left: -21px;
+    top: 50%;
+    }
+    .tweeterer, .date {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    line-height: 18px;
+    width: 140px;
+    }
+  </style>
+      <title>TambYOLO</title>
+  </head>
+  <body>
+    <header class="ulo">
+      <h1>TambYOLO!</h1>
+      <a class="bootstrap-logo" href="/" title="Home">
+        <img src="http://placekitten.com/145/145" alt="TambYOLO">
+      </a>
+      <p>
+        Pick a winning <a href="#">#hashtag</a> with a swag!
+      </p>
+    </header>
+    {% block body %}{% endblock %}
+    <footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    </footer>
+  </body>
 </html>
