@@ -60,11 +60,12 @@ def login(provider_name):
 
 @app.route('/yolo', methods=['GET', 'POST'])
 def yolo():
-  hashtag = request.args.get('hashtag')
+  hashtag  = request.args.get('hashtag')
+  how_many = request.args.get('how_many') # Wala pa
   url = 'https://api.twitter.com/1.1/search/tweets.json'
   params = {
     'q': hashtag,
-    'count': 5,
+    'count': 10,
   }
   res = authomatic.access(session['credentials'], url, params=params)
   #return jsonify(**res.data)
