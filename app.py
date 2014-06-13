@@ -52,7 +52,8 @@ def login(provider_name):
           result.user.update()
 
         # The rest happens inside the template.
-        return render_template('login.html', result=result)
+        #return render_template('login.html', result=result)
+        return render_template('yolo.html', tweet={})
 
     # Don't forget to return the response.
     return response
