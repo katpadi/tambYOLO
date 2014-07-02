@@ -70,8 +70,14 @@ def yolo():
   }
   res = authomatic.access(session['credentials'], url, params=params)
 
+  if res.data['statuses']:
+    tweet=random.choice(res.data['statuses'])
+  else:
+    # None huhu
+    tweet = None
+
   #random.sample = if more than 1
-  return render_template('yolo.html', tweet=random.choice(res.data['statuses']), tweets=res.data)
+  return render_template('yolo.html', tweet=tweet, tweets=res.data)
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
