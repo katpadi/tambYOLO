@@ -22,6 +22,9 @@ authomatic = Authomatic(CONFIG, 'your secret string', report_errors=False)
 
 @app.route('/')
 def index():
+  if 'credentials' in session.keys():
+    if session['credentials']:
+      return render_template('yolo.html', tweet={})
   return render_template('index.html')
 
 @app.route('/login/<provider_name>/', methods=['GET', 'POST'])
@@ -34,7 +37,7 @@ def login(provider_name):
     if result.user:
       # We need to update the user to get more info.
       result.user.update()
-
+      session['credentials'] = result.user.credentials.serialize()
       # The rest happens inside the template.
     return render_template('yolo.html', tweet={})
 
